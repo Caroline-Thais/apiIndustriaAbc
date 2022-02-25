@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+//Configuração cors
 app.use(cors());
 
 //Configurações body-parser
@@ -15,21 +16,22 @@ app.listen(8087, () => {
     console.log("Api rodando na porta 8087.");
 });
 
+//"Banco de dados"
 var DB = {
     maquinas: [
         {
             id: 1,
-            name: "maquina 13",
+            name: "13",
             status: "funcionando"
         },
         {
             id: 2,
-            name: "maquina 29",
+            name: "29",
             status: "parada"
         },
         {
             id: 3,
-            name: "maquina 56",
+            name: "56",
             status: "manutenção"
         }
     ]
@@ -48,22 +50,6 @@ app.get("/maquinas/:id", (req, res) => {
         var id = parseInt(req.params.id);
         var maquina = DB.maquinas.find(m => m.id == id);
         if(maquina != undefined){
-            res.statusCode = 200;
-            res.json(maquina);
-        }else{
-            res.sendStatus(404);
-        }
-    }
-});
-
-app.get("/maquina/:id", (req, res) => {
-    if(isNaN(req.params.id)){
-        res.sendStatus(400);
-    }else{
-        var id = parseInt(req.params.id);
-        var maquina = DB.maquinas.find(m => m.id == id);
-
-        if (maquina != undefined){
             res.statusCode = 200;
             res.json(maquina);
         }else{

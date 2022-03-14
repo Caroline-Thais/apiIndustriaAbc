@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const connection = require('./API maquinas/database/database');
+const Maquina = require('./API maquinas/database/Maquina');
 
 const port = process.env.PORT || 8087;
 
@@ -26,7 +27,7 @@ app.listen(8087, () => {
     console.log("Api rodando na porta 8087.");
 });
 
-//"Banco de dados"
+/*//"Banco de dados"
 var DB = {
     maquinas: [
         {
@@ -45,7 +46,7 @@ var DB = {
             status: "manutenção"
         }
     ]
-}
+}*/
 
 //Endpoints
 app.get("/maquinas", (req, res) => {

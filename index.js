@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const connection = require('./API maquinas/database/database');
 
 const port = process.env.PORT || 8087;
 
@@ -11,6 +12,13 @@ app.use(cors());
 //Configurações body-parser
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
+//Banco de dados
+connection.authenticate().then(() => {
+    console.log('Conectado com o bd.')
+}).catch(error => {
+    console.log('error')
+});
 
 
 //Porta
